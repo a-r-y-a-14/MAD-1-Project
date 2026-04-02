@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | View Company</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/student-dashboard" class="btn" style="border: none; color: white; background-color: rgb(224, 2, 2);">Back</a>
+        </div>
+    </div>
+    <div style="padding: 5px 25px; align-items: center; justify-content: space-between; display: flex;">
+        <h2>{{ comp.name }}</h2>
+    </div>
+    <div style="padding: 0px 25px; align-items: left;">
+        <h3>Overview</h3>
+        <p>{{ comp.overview }}</p>
+    </div>
+    <div style="padding: 0px 25px; align-items: left;">
+        <h3>Current Drives</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" colspan="2" style="width: 1000px; text-align: left;">Name</th>
+            </tr>
+            {% if drives %}
+                {% for drive in drives %}
+                <tr>
+                    <td>{{ drive.id }}</td>
+                    <td style="width: 1100px;">{{ drive.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="#view-drive-details" class="btn btn-blue">View Details</a>
+                        <div id="view-drive-details" class="overlay">
+                            <div class="card">
+                                <h3>Drive {{ drive.id }}</h3>
+                                <p>Job Title: {{ drive.job_title }}</p>
+                                <p>Job Description:</p>
+                                <p>{{ drive.job_description }}</p>
+                                <p>Salary: {{ drive.salary }}</p>
+                                <p>Location: {{ drive.location }}</p>
+                                <a href="/student-apply-drive?id={{ drive.id }}" class="btn btn-blue">Apply</a>
+                                <a href="#" class="btn btn-blue">Go Back</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align:center; font-style:italic;">
+                        No ongoing drives found.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+</body>
+</html>

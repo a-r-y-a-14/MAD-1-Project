@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Create New Drive</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/company-dashboard" class="btn" style="border: none; color: white; background-color: rgb(224, 2, 2);">Cancel</a>
+        </div>
+    </div>
+    <div class="login">
+        <div class="login-card">
+            <h2>Create New Drive</h2>
+            <p>Post a new job drive for your company</p>
+
+            <form method="POST">
+                <label>Drive Name</label>
+                <input type="text" name="name" placeholder="Name of Drive" required>
+
+                <label>Job Title</label>
+                <input type="text" name="job_title" placeholder="Job Title" required>
+                
+                <label>Job Description</label>
+                <input type="text" name="job_description" placeholder="Give a short overview in 150-200 words" required>
+
+                <label>Location</label>
+                <input type="text" name="location" placeholder="Address" required>
+                
+                <label>Salary</label>
+                <input type="text" name="salary" placeholder="Salary in Rs" required>
+
+                <label>Eligibility Criteria</label>
+                <input type="text" name="eligibility_criteria" placeholder="Eligibility Criteria" required>
+
+                <label>Deadline</label>
+                <input type="date" name="deadline" required>
+                
+                <button type="submit" class="login-btn">Create Drive</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

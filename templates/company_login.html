@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Company Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/" class="btn">Home</a>
+        </div>
+    </div>
+    <div class="login">
+        <div class="login-card">
+            <h2>Company Login</h2>
+            <p>Get the best employees for your company</p>
+
+            <form method="POST">
+                <label>Company Username</label>
+                <input type="text" name="username" required>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+
+            <div class="links">
+                <a href="#">Forgot Password?</a> <br><br>
+                <span>New here?</span> <a href="/company-register">Register</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

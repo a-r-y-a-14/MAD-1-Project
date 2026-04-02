@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Student Edit Profile</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/student-dashboard" class="btn" style="border: none; color: white; background-color: rgb(224, 2, 2);">Cancel</a>
+        </div>
+    </div>
+    <div class="login">
+        <div class="login-card" style="width: 455px;">
+            <h2>Student Edit Profile</h2>
+            <form method="POST">
+                <label>Name</label>
+                <input type="text" name="name" value="{{ student.name }}" required>
+                
+                <label>Date of Birth</label>
+                <input type="date" name="dob" value="{{ student.dob }}" required>
+                
+                <label>Department</label>
+                <input type="text" name="department" value="{{ student.department }}" required>
+                
+                <label>Set a Username</label>
+                <input type="text" name="username" value="{{ student.username }}" required>
+
+                <div class="row">
+                    <div class="field">        
+                        <label>NewPassword</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="field">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confpassword" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn">Update Profile</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employex | The Ultimate Solution to Employment</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <div class="top-border">
+            <div>
+                <h1>Employex</h1>
+                <h4>The Ultimate Solution to Employment</h4>
+            </div>
+            <div class="btn-group">
+                <a href="/admin-login" class="btn">Admin Login</a>
+                <a href="/company-login" class="btn">Company Login</a>
+                <a href="/student-login" class="btn">Student Login</a>
+            </div>
+        </div>
+        <div style="margin-top: 60px; padding-left: 20px; padding-right: 20px; text-align: center;">
+            <h1>Welcome to the Placement Portal.</h1>
+            <p style="font-size: 20px; color: #043444;">Manage drives, track applications, and monitor student progress.</p>
+
+            <div style="margin-top: 50px; font-size: 20px; margin-bottom: 80px;">
+                <p><b>Total Drives:</b> {{ total_drives }}</p>
+                <p><b>Ongoing Drives:</b> {{ ongoing_drives }}</p>
+                <p><b>Total registered Companies:</b> {{ total_companies }}</p>
+                <p><b>Total registered Students:</b> {{ total_students }}</p>
+                <p><b>Total Applications:</b> {{ total_applications }}</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-bottom: 30px; font-size: 20px;">
+            <b>Register your Company</b>
+            <a href="/company-register" class="btn btn-green" style="margin-left: 10px;">Company Registration</a>
+        </div>
+        <div style="text-align: center; font-size: 20px;">
+            <b>Register as a Student</b>
+            <a href="/student-register" class="btn btn-green" style="margin-left: 10px;">Student Registration</a>
+        </div>
+        <div style="text-align: center; margin-top: 60px;">
+            <i>Register now to access a wide range of job opportunities, connect with top companies, and take the next step in your career journey. Join us today and unlock your potential!</i>
+        </div>
+    </body>
+</html>

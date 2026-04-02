@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Welcome Admin</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/logout" class="btn" style="border: none; color: white; background-color: rgb(224, 2, 2);">Logout</a>
+        </div>
+    </div>
+    <div style="padding: 5px 25px; align-items: center; justify-content: space-between; display: flex;">
+        <h2>Welcome Admin, {{ user.username }}</h2>
+        <div class="search"  style="padding-right: 100px;">
+            <form method="GET" action="/admin-search">
+                <input type="text" name="q" placeholder="Student, Organization" value="{{ query if query else '' }}" style="padding: 6px; width: 250px;">
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <button class="btn" style="background-color: rgb(226, 255, 245); padding: 4.5px 16px;" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="content" style="padding: 0px 25px">
+        <h3 class="headings" style="margin-bottom: 10px; color:#346578; font-family: system-ui;" >Registered Companies</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" style="width: 1000px; text-align: left;">Name</th>
+                <th scope="col" style="text-align: center;">Actions</th>
+            </tr>
+            {% if reg_comp %}
+                {% for comp in reg_comp %}
+                <tr>
+                    <td>{{ comp.id }}</td>
+                    <td>{{ comp.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="/blacklist-company?id={{ comp.id }}"
+                        class="btn btn-red" style=" background-color: rgb(243, 199, 191); font-size: 15px; padding: 3px 10px;">
+                            Blacklist
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align:center; font-style:italic;">
+                        No registered companies.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <div id="content" style="padding: 0px 25px">
+        <h3 class="headings" style="margin-bottom: 10px; color:#346578; font-family: system-ui;" >Registered Students</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" style="width: 1000px; text-align: left;">Name</th>
+                <th scope="col" style="text-align: center;">Actions</th>
+            </tr>
+            {% if reg_stud %}
+                {% for stud in reg_stud %}
+                <tr>
+                    <td>{{ stud.id }}</td>
+                    <td>{{ stud.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="/blacklist-student?id={{ stud.id }}"
+                        class="btn btn-red" style=" background-color: rgb(243, 199, 191); font-size: 15px; padding: 3px 10px;">
+                            Blacklist
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align:center; font-style:italic;">
+                        No registered students.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <div id="content" style="padding: 0px 25px">
+        <h3 class="headings" style="margin-bottom: 10px; color:#346578; font-family: system-ui;" >Company Applications</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" style="width: 1000px; text-align: left;">Name</th>
+                <th scope="col" style="text-align: center;">Actions</th>
+            </tr>
+            {% if comp_app %}
+                {% for comp in comp_app %}
+                <tr>
+                    <td>{{ comp.id }}</td>
+                    <td>{{ comp.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="/approve-company?id={{ comp.id }}"
+                        class="btn btn-green" style=" background-color: rgb(195, 239, 197); font-size: 15px; padding: 3px 10px;">
+                            Approve
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align:center; font-style:italic;">
+                        No new company applications.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <div id="content" style="padding: 0px 25px">
+        <h3 class="headings" style="margin-bottom: 10px; color:#346578; font-family: system-ui;" >Ongoing Drives</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" style="width: 1000px; text-align: left;">Name</th>
+                <th scope="col" style="text-align: center;">Actions</th>
+            </tr>
+            {% if ong_drives %}
+                {% for drive in ong_drives %}
+                <tr>
+                    <td>{{ drive.id }}</td>
+                    <td>{{ drive.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="#view-drive-details" class="btn btn-blue" style="margin-right: 10px;">View Details</a>
+                        <div id="view-drive-details" class="overlay">
+                            <div class="card">
+                                <h3>Drive {{ drive.id }}</h3>
+                                <p>Job Title: {{ drive.job_title }}</p>
+                                <p>Job Description:</p>
+                                <p>{{ drive.job_description }}</p>
+                                <p>Salary: {{ drive.salary }}</p>
+                                <p>Location: {{ drive.location }}</p>
+                                <a href="#" class="btn btn-blue">Go Back</a>
+                            </div>
+                        </div>
+                        <a href="/mark-drive-completed?id={{ drive.id }}"
+                        class="btn btn-green" style=" background-color: rgb(195, 239, 197); font-size: 15px; padding: 3px 10px;">
+                            Mark as Complete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align:center; font-style:italic;">
+                        No ongoing drives.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <div id="content" style="padding: 0px 25px">
+        <h3 class="headings" style="margin-bottom: 10px; color:#346578; font-family: system-ui;" >Student Applications</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" style="width: 400px; text-align: left;">Student Name</th>
+                <th scope="col" style="width: 300px;">Drive</th>
+                <th scope="col" style="width: 300px;">Company</th>
+                <th scope="col" style="width: 150px; text-align: center;">Date</th>
+                <th scope="col" style="text-align: center;">Actions</th>
+            </tr>
+            {% if stud_app %}
+                {% for app, stud, drive, comp in stud_app %}
+                <tr>
+                    <td>{{ app.id }}</td>
+                    <td>{{ stud.name }}</td>
+                    <td>{{ drive.name }}</td>
+                    <td>{{ comp.name }}</td>
+                    <td>{{ app.date }}</td>
+                    <td style="text-align: center;">
+                        <a href="#view-student-application" class="btn btn-blue">View Application</a>
+                        <div id="view-student-application" class="overlay">
+                            <div class="card">
+                                <h3>Student Application</h3>
+                                <p>Student Name: {{ stud.name }}</p>
+                                <p>Department: {{ stud.department }}</p>
+                                <p>Drive: {{ drive.name }}</p>
+                                <p>Job Title: {{ drive.job_title }}</p>
+                                <a href="#" class="btn btn-blue">Go Back</a>
+                                <a href="#" class="btn btn-blue">View Resume</a>
+                            </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align:center; font-style:italic;">
+                        No student applications.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <div style="height: 40px;"></div>
+</body>
+</html>

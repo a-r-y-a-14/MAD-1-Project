@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Update Applications</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div>
+        <div class="card" style="text-align: center;">
+            <h3>Student Application</h3>
+            <p>Student Name: {{ stud.name }}</p>
+            <p>Department: {{ stud.department }}</p>
+            <p>Drive: {{ drive.name }}</p>
+            <p>Job Title: {{ drive.job_title }}</p>
+            <form method="POST">
+                <label style="margin-bottom: 5px; font-size: 15px;">Application Status</label>
+                <select style="padding: 3px 15px; margin-bottom: 15px; margin-left: 1px;" name="status" required>
+                    <option value="">-- Select --</option>
+                    <option value="shortlisted">Shortlist</option>
+                    <option value="waiting">Waiting</option>
+                    <option value="rejected">Reject</option>
+                </select>
+                <button class="btn btn-green" style="padding: 2px 8px; margin-left: 20px;" type="submit">Save</button>
+            </form>
+            <a href="/company-view-drive-details?id={{ drive.id }}" class="btn btn-red">Go Back</a>
+            <a href="#" class="btn btn-blue">View Resume</a>
+        </div>
+    </div>
+</body>
+</html>

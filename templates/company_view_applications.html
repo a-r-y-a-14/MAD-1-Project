@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Update Applications</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/company-dashboard" class="btn" style="border: none; color: white; background-color: rgb(224, 2, 2);">Back</a>
+        </div>
+    </div>
+    <div style="padding: 5px 25px; align-items: center; justify-content: space-between; display: flex;">
+        <h2>Applications for the Drive: {{ drive.name }}</h2>
+    </div>
+    <div style="padding: 0px 25px; align-items: left;">
+        <h3>Job Title: {{ drive.job_title }}</h3>
+    </div>
+    <div style="padding: 0px 25px; align-items: left;">
+        <h3>Received Applications</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" colspan="2" style="width: 1000px; text-align: left;">Name</th>
+            </tr>
+            {% if stud_apps %}
+                {% for stud_app, stud in stud_apps %}
+                <tr>
+                    <td>{{ stud_app.id }}</td>
+                    <td style="width: 1100px;">{{ stud.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="/company-update-applications?app_id={{ stud_app.id }}" class="btn btn-blue">View Details</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5" style="text-align:center; font-style:italic;">
+                        No applications till now.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+</body>
+</html>

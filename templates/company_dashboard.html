@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Welcome Student</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/logout" class="btn" style="border: none; color: white; background-color: rgb(224, 2, 2);">Logout</a>
+        </div>
+    </div>
+    <div style="padding: 5px 25px; align-items: center; justify-content: space-between; display: flex;">
+        <h2>Welcome {{ user.name }},</h2>
+        <a href="/company-create-drive" class="btn btn-green" style="margin-left: 975px; color: darkgreen; border-color: darkgreen;">Create Drive</a>
+    </div>
+    <div id="content" style="padding: 0px 25px">
+        <h3 class="headings" style="margin-bottom: 10px; color:#346578; font-family: system-ui;" >Ongoing Drives</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" style="width: 1000px; text-align: left;">Name</th>
+                <th scope="col" style="text-align: center;">Actions</th>
+            </tr>
+            {% if ong_drives %}
+                {% for drive in ong_drives %}
+                <tr>
+                    <td>{{ drive.id }}</td>
+                    <td>{{ drive.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="/company-view-drive-details?id={{ drive.id }}" class="btn btn-blue" style="margin-right: 10px;">View Details</a>
+                        <a href="/company-mark-drive-completed?id={{ drive.id }}"
+                        class="btn btn-green" style=" background-color: rgb(195, 239, 197); font-size: 15px; padding: 3px 10px;">
+                            Mark as Complete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align:center; font-style:italic;">
+                        No ongoing drives.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+    <div id="content" style="padding: 0px 25px">
+        <h3 class="headings" style="margin-bottom: 10px; color:#346578; font-family: system-ui;" >Closed Drives</h3>
+    </div>
+    <div id="table" style="padding: 0px 25px">
+        <table class="table">
+            <tr style="font-family: system-ui;">
+                <th scope="col" style="width: 100px;">ID</th>
+                <th scope="col" style="width: 1000px; text-align: left;">Name</th>
+                <th scope="col" style="text-align: center;">Actions</th>
+            </tr>
+            {% if closed_drives %}
+                {% for drive in closed_drives %}
+                <tr>
+                    <td>{{ drive.id }}</td>
+                    <td>{{ drive.name }}</td>
+                    <td style="text-align: center;">
+                        <a href="/company-update-drive-details?id={{ drive.id }}" class="btn btn-blue" style="margin-right: 10px;">Update</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="6" style="text-align:center; font-style:italic;">
+                        No closed drives.
+                    </td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+</body>

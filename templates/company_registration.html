@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Company Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="top-border">
+        <div>
+            <h1>Employex</h1>
+            <h4>The Ultimate Solution to Employment</h4>
+        </div>
+        <div class="btn-group">
+            <a href="/" class="btn">Home</a>
+        </div>
+    </div>
+    <div class="login">
+        <div class="login-card">
+            <h2>Company Registration</h2>
+            <p>Get the best employees for your company</p>
+
+            <form method="POST">
+                <label>Company Name</label>
+                <input type="text" name="name" placeholder="Registered Name of Company" required>
+                
+                <label>Company Overview</label>
+                <input type="text" name="overview" placeholder="Give a short overview in 150-200 words" required>
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Registered Email" required>
+                
+                <label>Address</label>
+                <input type="text" name="address" placeholder="Address" required>
+                
+                <label>Set a Username</label>
+                <input type="text" name="username" placeholder="Username" required>
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="abc@1234" required>
+
+                <label>Confirm Password</label>
+                <input type="password" name="confpassword" placeholder="abc@1234" required>
+                
+                <button type="submit" class="login-btn">Register</button>
+            </form>
+
+
+            <div class="links">
+                <span>Aldready here?</span> <a href="/company-login">Login</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

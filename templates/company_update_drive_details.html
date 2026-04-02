@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employex | Update Applications</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div>
+        <div class="card" style="text-align: center;">
+            <h3>Drive Details</h3>
+            <p>Drive: {{ drive.name }}</p>
+            <p>Job Title: {{ drive.job_title }}</p>
+            <form method="POST">
+                <label style="margin-bottom: 0px; font-size: 16px;">Deadline:</label>
+                <input type="date" style="padding: 5px 0px; margin-bottom: 15px; margin-left: 1px; width: 60%;" name="deadline" required>
+                <button class="btn btn-green" style="padding: 2px 8px; margin-bottom: 10px;" type="submit">Restart Drive</button>
+            </form>
+            <a href="/company-dashboard" class="btn btn-red">Cancel</a>
+        </div>
+    </div>
+</body>
+</html>
